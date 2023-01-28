@@ -67,6 +67,7 @@ public class ParkingLotServiceImpl implements ParkingLotService {
         spot.setId(spotId);
         spot.setPricePerHour(pricePerHour);
         spot.setOccupied(false);
+        spot.setSpotType(SpotType.TWO_WHEELER);
         spotList.add(spot);
         parkingLotRepository1.save(parkingLot);
 
