@@ -26,9 +26,9 @@ public class Spot {
     }
 
     public Spot(int noOfWheels, int pricePerHour) {
-        if (noOfWheels==2)
+        if (noOfWheels<=2)
             this.spotType = SpotType.TWO_WHEELER;
-        else if (noOfWheels==4)
+        else if (noOfWheels<=4)
             this.spotType= SpotType.FOUR_WHEELER;
         else
             this.spotType= SpotType.OTHERS;
