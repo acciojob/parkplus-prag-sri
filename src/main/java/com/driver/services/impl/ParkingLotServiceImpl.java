@@ -59,18 +59,35 @@ public class ParkingLotServiceImpl implements ParkingLotService {
     public Spot updateSpot(int parkingLotId, int spotId, int pricePerHour) {
         //spotid spot is not present in repo
 
-        ParkingLot parkingLot= parkingLotRepository1.findById(parkingLotId).get();
-        List<Spot> spotList= parkingLot.getSpotList();
-        Spot spot= new Spot();
-        spot.setId(spotId);
-        spot.setPricePerHour(7);
-        spot.setOccupied(false);
-        spot.setSpotType(SpotType.TWO_WHEELER);
-        spot.setParkingLot(parkingLot);
-        spotList.add(spot);
-        parkingLotRepository1.save(parkingLot);
+//        ParkingLot parkingLot= parkingLotRepository1.findById(parkingLotId).get();
+//        List<Spot> spotList= parkingLot.getSpotList();
+//        Spot spot= new Spot();
+//        spot.setId(spotId);
+//        spot.setPricePerHour(pricePerHour);
+//        spot.setOccupied(false);
+//        spot.setSpotType(SpotType.TWO_WHEELER);
+//        spot.setParkingLot(parkingLot);
+//        spotList.add(spot);
+//        parkingLotRepository1.save(parkingLot);
 
 //        spotRepository1.save(spot);
+
+        Spot spot = null;
+        ParkingLot parkingLot =parkingLotRepository1.findById(parkingLotId).get();
+        List<Spot> spotList = parkingLot.getSpotList();
+        for(Spot spot1 : spotList)
+        {
+            if(spot1.getId()==spotId)
+            {
+                spot1.setPricePerHour(pricePerHour);
+                spotRepository1.save(spot1);
+                spot =spot1;
+                break;
+            }
+        }
+
+
+        //  parkingLotRepository1.save(parkingLot);
 
         return spot;
     }
