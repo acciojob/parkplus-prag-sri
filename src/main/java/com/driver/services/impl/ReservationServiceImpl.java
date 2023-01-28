@@ -27,7 +27,10 @@ public class ReservationServiceImpl implements ReservationService {
         //Note that the vehicle can only be parked in a spot having a type equal to or larger than given vehicle
         //If parkingLot is not found, user is not found, or no spot is available, throw "Cannot make reservation" exception.
 
-        if(!userRepository3.existsById(userId) || !parkingLotRepository3.existsById(parkingLotId))
+        if(userRepository3.findById(userId)==null)
+            throw new Exception("Cannot make reservation");
+
+        if(parkingLotRepository3.findById(parkingLotId)==null)
             throw new Exception("Cannot make reservation");
 
         User user= userRepository3.findById(userId).get();

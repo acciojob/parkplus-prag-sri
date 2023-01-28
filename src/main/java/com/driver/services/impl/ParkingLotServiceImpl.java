@@ -80,6 +80,6 @@ public class ParkingLotServiceImpl implements ParkingLotService {
         for(Spot spot: spotList)
             spotRepository1.delete(spot);
 
-        parkingLotRepository1.delete(parkingLot);
+        parkingLotRepository1.deleteById(parkingLotId);
     }
 }
